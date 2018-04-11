@@ -64,7 +64,7 @@ class mockSource {
 
         posts.splice(obj.id - 1, 1)
 
-        return Promise.resolve({posts});
+        return Promise.resolve({obj});
     }
     getProducts() {
         return Promise.resolve(products);
