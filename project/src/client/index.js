@@ -1,5 +1,6 @@
 console.log("Frontend server starting!");
 
+
 // ------------ Demonstrating existing functionality -----------
 
 fetch('/api/products')
@@ -26,6 +27,37 @@ fetch('/api/products', {
   .catch(e => console.log("DEMO: Adding a new product doesn't work for the production source, but this is how we would've done it!", e));
 
 // ------------ Testing new functionality -----------
+
+fetch('/api/posts')
+  .then(response => response.json())
+  .then(posts  => console.log('TESTING POSTS', posts))
+
+
+fetch('/api/posts/1')
+  .then(response => response.json())
+  .then(posts => console.log('TESTING SINGLE POSTS', posts))
+
+fetch('/api/posts', {
+  method: 'POST',
+  body: JSON.stringify({
+    name: 'test single posts',
+    description: 'lul XD',
+    price: 'meh xdlol'
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+})
+  .then(response => response.json())
+  .then(response => console.log('ADDING POSTS LUL', response))
+
+
+fetch('/api/posts/1', {
+  method: 'DELETE',
+})
+  .then(response => response.json())
+  .then(response => console.log('DELETING POST', response))
+
 
     // ... add code to make fetches to your new routes here ...
 

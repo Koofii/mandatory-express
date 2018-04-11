@@ -5,6 +5,18 @@ class Store {
     constructor(source) {
         this.source = source;
     }
+    getPosts(){
+        return this.source.getPosts();
+    }
+    getPost(id){
+        return this.source.getPost(id);
+    }
+    addPost(postData){
+        return this.source.addPost(postData);
+    }
+    deletePost(deleteId){
+        return this.source.deletePost(deleteId)
+    }
 
     getProducts() {
         return this.source.getProducts();

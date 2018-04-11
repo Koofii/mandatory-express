@@ -10,15 +10,69 @@ const products = [
         category: 'book'
     }
 ];
+const posts = [
+    {
+        id: 1,
+        name: 'kooooofiiie',
+        description: 'fiddy krona'
+    },
+    {
+        id: 2,
+        name: 'Robert',
+        description: 'hundra krona'
+    },
+    {
+        id: 3,
+        name: 'POSTING IS LUL',
+        description: 'ne lul ez'
+    },
+    {
+        id: 4,
+        name: 'hehehehehehehehehehhehe',
+        description: 'ex utbildning'
+    }
+]
 
 class mockSource {
+    getPosts(){
+        return Promise.resolve(posts)
+    }
+    getPost(id){
+        return new Promise((resolve, reject) => {
+            const found = posts.find(post => post.id === id);
+            found ? resolve(found) : reject();
+        })
+    }
+
+    addPost(productData){
+        const lastIndex = posts.length - 1;
+        const lastId    = posts[lastIndex].id;
+        const newPost = {
+            id: lastId +1,
+            name: productData.name,
+            description: productData.description,
+            price: productData.price
+        }
+        posts.push(newPost)
+        return Promise.resolve(newPost)
+    }
+    deletePost(deleteId){
+
+        const obj = posts.find(function(obj){
+            return obj.id === deleteId;
+        })
+
+        posts.splice(obj.id - 1, 1)
+
+        return Promise.resolve({posts});
+    }
     getProducts() {
         return Promise.resolve(products);
     }
 
     getProduct(id) {
         return new Promise((resolve, reject) => {
-            const found = products.find(product => product.id === +id);
+            const found = products.find(product => product.id === +id); // + är vad? Kika..
             found ? resolve(found) : reject();
         });
 
