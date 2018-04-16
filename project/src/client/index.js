@@ -3,6 +3,7 @@ console.log("Frontend server starting!");
 
 // ------------ Demonstrating existing functionality -----------
 
+
 fetch('/api/products')
   .then(response => response.json())
   .then(products => console.log("DEMO: getting all products", products));
